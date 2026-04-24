@@ -1,0 +1,321 @@
+/* ============================================
+   Global Reset & Base Styles
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  /* Warm sky-to-dusk gradient background */
+  background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 50%, #fd79a8 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ============================================
+   App Container
+   ============================================ */
+.app {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* App title at the top */
+.app-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.app-title span {
+  font-size: 1.4rem;
+}
+
+/* ============================================
+   Search Card
+   ============================================ */
+.search-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  margin-bottom: 16px;
+}
+
+.search-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #636e72;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+/* Row that holds the input + button side by side */
+.search-row {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: #2d3436;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* Highlight the input border when user clicks on it */
+.search-input:focus {
+  border-color: #a29bfe;
+}
+
+.search-input::placeholder {
+  color: #b2bec3;
+  font-weight: 400;
+}
+
+.search-button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #a29bfe, #fd79a8);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+/* Slightly dim the button when disabled (loading state) */
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.search-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Loading State
+   ============================================ */
+.loading-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+/* Spinning circle animation */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e0e0e0;
+  border-top-color: #a29bfe;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #636e72;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ============================================
+   Error State
+   ============================================ */
+.error-card {
+  background: #fff5f5;
+  border: 2px solid #ffb8b8;
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.error-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.error-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #d63031;
+  margin-bottom: 2px;
+}
+
+.error-message {
+  font-size: 0.85rem;
+  color: #b2563a;
+  line-height: 1.4;
+}
+
+/* ============================================
+   Weather Card
+   ============================================ */
+.weather-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* City name + country */
+.city-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2d3436;
+  margin-bottom: 2px;
+}
+
+.country-badge {
+  display: inline-block;
+  background: #f0f0ff;
+  color: #a29bfe;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Big temperature + icon in the center */
+.weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.temperature {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #2d3436;
+  line-height: 1;
+}
+
+.temp-unit {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #636e72;
+  vertical-align: super;
+}
+
+.weather-icon-container {
+  text-align: center;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.condition-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #636e72;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Divider line between main and stats */
+.divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+/* Stats row: Humidity and Wind side by side */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-box {
+  background: #f8f9fa;
+  border-radius: 14px;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.stat-icon {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b2bec3;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2d3436;
+}
+
+.stat-unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #636e72;
+}
+
+/* ============================================
+   Responsive: Small Screens
+   ============================================ */
+@media (max-width: 380px) {
+  .temperature {
+    font-size: 3.2rem;
+  }
+
+  .weather-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .search-button {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+}
